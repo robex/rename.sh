@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Rename all the files specified in a directory to a sequential order.
 # WARNING: If the files are already named sequentially, backups will
 # be created with a tilde (~) appended at the end.
