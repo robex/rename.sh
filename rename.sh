@@ -57,7 +57,7 @@ exts=(".gif" ".png" ".jpg" ".webm" ".mp4")
 if [ $DRYRUN -eq 1 ]
 then
 	for i in "${exts[@]}"; do
-		find $1 -name "*$i" -o -name "*$i~" | cat -n | while read n f; do printf "%30s renamed to %s%s%${NDIGITS}d$i\n" "$f" "$1" "$PREFIX" $n; done
+		find $1 -name "*$i" -o -name "*$i~" | cat -n | while read n f; do printf "%30s renamed to %s/%s%${NDIGITS}d$i\n" "$f" "$1" "$PREFIX" $n; done
 	done
 else
 	#confirm
@@ -65,7 +65,7 @@ else
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		for i in "${exts[@]}"; do
-			find $1 -name "*$i" -o -name "*$i~" | cat -n | while read n f; do mv -b "$f" `printf "%s%s%${NDIGITS}d$i" $1 "$PREFIX" $n`; done
+			find $1 -name "*$i" -o -name "*$i~" | cat -n | while read n f; do mv -b "$f" `printf "%s/%s%${NDIGITS}d$i" $1 "$PREFIX" $n`; done
 		done
 	fi
 fi
